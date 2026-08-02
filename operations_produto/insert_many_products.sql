@@ -1,0 +1,21 @@
+USE negocio;
+INSERT INTO produto (nome, preco) VALUES 
+('Celular Motorola 84', 1200),
+('Notebook Acer Nitro 5', 3000),
+('Tablet Samsung Galaxy Tab', 2000),
+('Samsung Galaxy S21', 4000),
+('Fone de Ouvido JBL QUANTUM', 300),
+('Fone de Ouvido Sony WH-1000XM4', 250),
+('Mesa Digitalizadora', 3000),
+('Teclado Mecânico Razer', 800),
+('Mouse Gamer Logitech G502', 500),
+('Monitor LG UltraGear', 1500),
+('Cadeira Gamer DXRacer', 2000),
+('Webcam Logitech C920', 400),
+('Microfone Blue Yeti', 600),
+('Placa de Captura Elgato HD60 S', 800),
+('Headset HyperX Cloud II', 350),
+('SSD Samsung 970 EVO Plus', 700),
+('HD Externo Seagate Backup Plus', 400),
+('Impressora HP DeskJet 3755', 250),
+('Scanner Canon CanoScan LiDE 300', 300);
