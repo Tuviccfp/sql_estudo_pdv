@@ -5,12 +5,13 @@ import com.example.demo.exceptions.NotFound;
 import com.example.demo.exceptions.NotNull;
 import com.example.demo.model.Produto;
 import com.example.demo.repository.ProdutoRepo;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.validation.annotation.Validated;
 
 import java.util.List;
 
 @Service
+@Validated
 public class ProdutoService {
 
     private final ProdutoRepo repo;
@@ -31,7 +32,7 @@ public class ProdutoService {
     public List<Produto> listProducts() {
         return repo.listProduts();
     }
-    public Produto produtoById(Long id) {
+    public Produto produtoById(Long id) throws NotFound {
         return repo.catchProdutById(id);
     }
     public int updateProduct(Produto produto, Long id) throws NotNull, IllegalNumberOperation {
@@ -42,6 +43,6 @@ public class ProdutoService {
         if(id == null) {
             throw new NotFound("Não foi informado um ID.");
         }
-
+        repo.deleteProdut(id);
     }
 }
