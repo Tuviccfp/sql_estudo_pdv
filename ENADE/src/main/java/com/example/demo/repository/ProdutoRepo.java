@@ -1,5 +1,6 @@
 package com.example.demo.repository;
 
+import com.example.demo.exceptions.NotFound;
 import com.example.demo.model.Produto;
 
 import java.util.List;
@@ -9,5 +10,5 @@ public interface ProdutoRepo {
     int updated(Produto produto, long id);
     List<Produto> listProduts();
     int deleteProdut(Long id);
-    Produto catchProdutById(Long id);
+    Produto catchProdutById(Long id) throws NotFound;
 }

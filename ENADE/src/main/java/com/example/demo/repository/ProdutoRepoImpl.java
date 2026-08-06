@@ -1,7 +1,9 @@
 package com.example.demo.repository;
 
+import com.example.demo.exceptions.NotFound;
 import com.example.demo.model.Produto;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
 import org.springframework.stereotype.Repository;
@@ -48,8 +50,12 @@ public class ProdutoRepoImpl implements ProdutoRepo {
     }
 
     @Override
-    public Produto catchProdutById(Long id) {
-        String sql = "SELECT id, nome, preco, quantidade FROM produto WHERE id = ?";
-        return (Produto) jdbcTemplate.queryForObject(sql, rowMapper, id);
+    public Produto catchProdutById(Long id) throws NotFound {
+        try {
+            String sql = "SELECT id, nome, preco, quantidade FROM produto WHERE id = ?";
+            return (Produto) jdbcTemplate.queryForObject(sql, rowMapper, id);
+        } catch (EmptyResultDataAccessException ex) {
+            throw new NotFound("Produto não encontrado");
+        }
     }
 }
